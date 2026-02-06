@@ -109,4 +109,9 @@ if __name__ == "__main__":
     print("output and origin diff:")
     print(torch.max(torch.abs(output - output_no_lora)).item())    
     
+    print("output and no_merge diff:")
+    lora_layer.unmerge_weight()
+    output_no_merge = lora_layer(x)
+    print(torch.max(torch.abs(output - output_no_merge)).item())
+    
     
